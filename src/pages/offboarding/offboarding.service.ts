@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { delay, Observable, of, startWith } from 'rxjs';
+import { BehaviorSubject, combineLatestWith, delay, map, Observable, of, startWith } from 'rxjs';
 import { Status } from '../../shared/model/status';
 import { User } from '../../shared/model/user';
 import { UserStatus } from '../../shared/model/user-status';
-import { OffboardingLoadingVo, OffboardingVo } from './model/offboarding.vo';
+import { OffboardingVo } from './model/offboarding.vo';
+import { UserListState } from './model/user-list.state';
 
 const mockUsers: User[] = [
   {
@@ -44,21 +45,54 @@ const mockUsers: User[] = [
   providedIn: 'root'
 })
 export class OffboardingService {
+  private readonly state$ = new BehaviorSubject<{ search: string }>({ search: '' });
+  private userListState$?: Observable<UserListState>;
 
   constructor() { }
 
   getVo(): Observable<OffboardingVo> {
-    return of({
-      status: Status.SUCCESS,
-      users: mockUsers,
-    })
+    return this.state$
       .pipe(
-        delay(2000),
-        startWith<OffboardingVo>({ status: Status.LOADING }),
+        combineLatestWith(this.getUserList()),
+        map(([state, userListState]) => {
+          if (userListState.status !== Status.SUCCESS) {
+            return userListState;
+          }
+
+          // todo implement search by other properties
+          const users = mockUsers.filter(user => user.name.toLowerCase().includes(state.search.toLowerCase()));
+
+          return { status: Status.SUCCESS, users };
+        }),
       );
   }
 
   filterUsers(search: string): void {
-    // todo implement
+    // Retrieve the current state
+    const state = this.state$.getValue();
+
+    if (state.search === search) {
+      return; // Skip state update if the value hasn't changed
+    }
+
+    // Update the state with the new search value
+    return this.state$.next({ ...state, search })
+  }
+
+  /**
+   * Retrieves the list of users.
+   */
+  private getUserList(): Observable<UserListState> {
+    // If userListState$ is already initialized, return it to avoid creating multiple streams
+    if (this.userListState$) {
+      return this.userListState$;
+    }
+
+    // Create a new stream that emits the user list with a delay and a loading state
+    return this.userListState$ = of({ items: mockUsers, status: Status.SUCCESS })
+      .pipe(
+        delay(2000),
+        startWith<UserListState>({ status: Status.LOADING })
+      );
   }
 }
