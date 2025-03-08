@@ -6,6 +6,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './offboarding.component.html',
   styleUrl: './offboarding.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'app-onboarding'
+  }
 })
 export class OffboardingComponent {
 
