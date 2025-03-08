@@ -1,1 +1,43 @@
-<p>offboarding works!</p>
+<h1>Offboarding</h1>
+
+<div class="app-onboarding__header">
+  <div>Employees</div>
+
+  <mat-form-field>
+    <input matInput placeholder="Search">
+  </mat-form-field>
+</div>
+
+@if (vo$ | async; as vo) {
+  @switch (vo.status) {
+    @case (Status.LOADING) {
+      <mat-spinner></mat-spinner>
+    }
+
+    @case (Status.ERROR) {
+      An error occurred.
+    }
+
+    @case (Status.SUCCESS) {
+      <table class="app-onboarding__table">
+        <tr>
+          <th>Full name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Equipment</th>
+          <th>Status</th>
+        </tr>
+
+        @for (user of vo.users; track user.id) {
+          <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.department }}</td>
+            <td>{{ user.equipments }}</td> <!--todo format-->
+            <td>{{ user.status }}</td> <!--todo format-->
+          </tr>
+        }
+      </table>
+    }
+  }
+}

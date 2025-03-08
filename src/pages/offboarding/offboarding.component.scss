@@ -1,3 +1,17 @@
 :host, .app-onboarding {
+  box-sizing: border-box;
   display: block;
+  margin: 0 auto;
+  max-width: 992px;
+  padding: 20px;
+}
+
+.app-onboarding__header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-onboarding__table {
+  width: 100%;
 }
