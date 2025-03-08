@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { OffboardingService } from './offboarding.service';
+import { OffboardingVo } from './model/offboarding.vo';
 
 @Component({
   selector: 'app-offboarding',
@@ -10,6 +13,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     class: 'app-onboarding'
   }
 })
-export class OffboardingComponent {
+export class OffboardingComponent implements OnInit {
+  protected vo$?: Observable<OffboardingVo>;
 
+  constructor(private service: OffboardingService) {
+
+  }
+
+  ngOnInit(): void {
+    this.vo$ = this.service.getVo();
+  }
 }
