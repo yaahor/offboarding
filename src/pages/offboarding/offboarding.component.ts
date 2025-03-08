@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -12,7 +13,10 @@ import { StatusPipe } from './ui/status.pipe';
 
 @Component({
   selector: 'app-offboarding',
-  imports: [MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe, StatusPipe],
+  imports: [
+    MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe, StatusPipe,
+    ReactiveFormsModule,
+  ],
   templateUrl: './offboarding.component.html',
   styleUrl: './offboarding.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,9 +27,9 @@ import { StatusPipe } from './ui/status.pipe';
 export class OffboardingComponent implements OnInit {
   protected vo$?: Observable<OffboardingVo>;
   protected readonly Status = Status;
+  protected searchControl = new FormControl();
 
   constructor(private service: OffboardingService) {
-
   }
 
   ngOnInit(): void {
