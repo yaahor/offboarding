@@ -9,7 +9,7 @@
 </div>
 
 @if (vo$ | async; as vo) {
-  @switch (vo.status) {
+  @switch (vo.userList.status) {
     @case (Status.LOADING) {
       <mat-spinner></mat-spinner>
     }
@@ -28,7 +28,7 @@
           <th>Status</th>
         </tr>
 
-        @for (user of vo.users; track user.id) {
+        @for (user of vo.userList.items; track user.id) {
           <tr>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>

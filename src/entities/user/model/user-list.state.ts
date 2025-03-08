@@ -1,5 +1,5 @@
 import { Status } from '../../../shared/model/status';
-import { User } from '../../../shared/model/user';
+import { User } from './user';
 
 export type UserListState = UserListErrorState | UserListLoadingState | UserListSuccessState;
 

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Equipment } from '../../../shared/model/equipment';
+import { Equipment } from '../../../entities/user/model/equipment';
 
 @Pipe({
   name: 'equipmentList'
