@@ -21,8 +21,7 @@ export class OffboardingService {
             return { userList: userListState };
           }
 
-          // todo implement search by other properties
-          const users = userListState.items.filter(user => user.name.toLowerCase().includes(state.search.toLowerCase()));
+          const users = userListState.items.filter(user => user.searchable.includes(state.search.toLowerCase()));
 
           return { userList: { status: Status.SUCCESS, items: users } };
         }),
