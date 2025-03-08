@@ -57,4 +57,8 @@ export class OffboardingService {
         startWith<OffboardingVo>({ status: Status.LOADING }),
       );
   }
+
+  filterUsers(search: string): void {
+    // todo implement
+  }
 }
