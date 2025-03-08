@@ -8,6 +8,9 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'app',
+  }
 })
 export class AppComponent {
   title = 'offboarding';
