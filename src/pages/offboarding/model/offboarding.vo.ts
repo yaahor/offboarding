@@ -1,5 +1,5 @@
-import { Status } from '../../shared/model/status';
-import { User } from '../../shared/model/user';
+import { Status } from '../../../shared/model/status';
+import { User } from '../../../shared/model/user';
 
 export type OffboardingVo = OffboardingErrorVo | OffboardingLoadingVo | OffboardingSuccessVo;
 
