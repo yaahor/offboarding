@@ -7,10 +7,11 @@ import { Observable } from 'rxjs';
 import { Status } from '../../shared/model/status';
 import { OffboardingService } from './offboarding.service';
 import { OffboardingVo } from './model/offboarding.vo';
+import { EquipmentListPipe } from './ui/equipment-list.pipe';
 
 @Component({
   selector: 'app-offboarding',
-  imports: [MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule],
+  imports: [MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe],
   templateUrl: './offboarding.component.html',
   styleUrl: './offboarding.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
