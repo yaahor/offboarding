@@ -8,10 +8,11 @@ import { Status } from '../../shared/model/status';
 import { OffboardingService } from './offboarding.service';
 import { OffboardingVo } from './model/offboarding.vo';
 import { EquipmentListPipe } from './ui/equipment-list.pipe';
+import { StatusPipe } from './ui/status.pipe';
 
 @Component({
   selector: 'app-offboarding',
-  imports: [MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe],
+  imports: [MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe, StatusPipe],
   templateUrl: './offboarding.component.html',
   styleUrl: './offboarding.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
