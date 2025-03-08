@@ -19,13 +19,13 @@
     }
 
     @case (Status.SUCCESS) {
-      <table class="app-onboarding__table">
+      <table class="app-onboarding__table" matSort (matSortChange)="onSortChange($event)">
         <tr>
-          <th>Full name</th>
-          <th>Email</th>
-          <th>Department</th>
-          <th>Equipment</th>
-          <th>Status</th>
+          <th [mat-sort-header]="SortKey.NAME">Full name</th>
+          <th [mat-sort-header]="SortKey.EMAIL">Email</th>
+          <th [mat-sort-header]="SortKey.DEPARTMENT">Department</th>
+          <th [mat-sort-header]="SortKey.EQUIPMENT">Equipment</th>
+          <th [mat-sort-header]="SortKey.STATUS">Status</th>
         </tr>
 
         @for (user of vo.userList.items; track user.id) {
