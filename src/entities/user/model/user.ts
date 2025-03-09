@@ -8,5 +8,4 @@ export interface User {
   status: UserStatus,
   email: string,
   equipments: Equipment[];
-  searchable: string;
 }
