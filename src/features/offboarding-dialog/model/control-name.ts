@@ -2,7 +2,7 @@ export enum ControlName {
   RECEIVER = 'receiver',
   EMAIL = 'email',
   PHONE = 'phone',
-  STREET = 'street',
+  STREET = 'streetLine',
   CITY = 'city',
   POSTAL_CODE = 'postalCode',
   COUNTRY = 'country',

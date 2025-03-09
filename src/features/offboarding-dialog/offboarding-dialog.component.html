@@ -70,15 +70,23 @@
   </form>
 </mat-dialog-content>
 
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
+@if (offboardingStatus() === Status.LOADING) {
+  <mat-spinner></mat-spinner>
+} @else {
+  @if(offboardingStatus() === Status.ERROR) {
+    <div class="app-offboarding-dialog__placeholder">An error occurred</div>
+  }
 
-  <button
-    [disabled]="formGroup.invalid"
-    mat-button
-    mat-dialog-close
-    (click)="onConfirmClick()"
-  >
-    Confirm
-  </button>
-</mat-dialog-actions>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+
+    <button
+      [disabled]="formGroup.invalid"
+      mat-button
+      (click)="onConfirmClick()"
+    >
+      Confirm
+    </button>
+  </mat-dialog-actions>
+}
+
