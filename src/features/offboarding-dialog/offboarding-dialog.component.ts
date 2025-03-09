@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject, model, OnInit, 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -52,6 +52,7 @@ export class OffboardingDialogComponent implements OnInit {
   private readonly blur$ = new Subject<void>();
   private readonly user = inject<User>(MAT_DIALOG_DATA);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly dialogRef = inject(MatDialogRef);
 
   constructor(private readonly service: OffboardingDialogService, private readonly router: Router) {
   }
@@ -83,9 +84,9 @@ export class OffboardingDialogComponent implements OnInit {
         filter(state => state.status === Status.SUCCESS),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((state) => {
-        console.log(state);
+      .subscribe(() => {
         this.router.navigate(['/']).then();
+        this.dialogRef.close();
       });
   }
 }
