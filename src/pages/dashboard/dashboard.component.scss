@@ -16,3 +16,37 @@
   margin: 0 auto;
   text-align: center;
 }
+
+//region Description
+.app-dashboard-table {
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-auto-rows: 40px;
+}
+
+.app-dashboard-table__cell {
+  padding: 0 16px;
+}
+
+.app-dashboard-table__row {
+  align-items: center;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 5;
+}
+
+.app-dashboard-table__row_data {
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgba(#000, 0.05);
+  }
+}
+
+.app-dashboard-table__row_header {
+  border-bottom: 1px solid #000;
+  font-weight: 600;
+}
+//endregion

@@ -14,13 +14,12 @@ import { DashboardService } from './dashboard.service';
 import { DashboardVo } from './model/dashboard.vo';
 import { EquipmentListPipe } from './ui/equipment-list.pipe';
 import { StatusPipe } from './ui/status.pipe';
-import { SortKey } from './model/sort-key';
 
 @Component({
   selector: 'app-dashboard',
   imports: [
     MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe, StatusPipe,
-    ReactiveFormsModule, MatTableModule, RouterModule,
+    ReactiveFormsModule, RouterModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -33,8 +32,6 @@ export class DashboardComponent implements OnInit {
   protected vo$?: Observable<DashboardVo>;
   protected readonly searchControl = new FormControl();
   protected readonly Status = Status;
-  protected readonly SortKey = SortKey;
-  protected readonly displayedColumns: string[] = [SortKey.NAME, SortKey.EMAIL, SortKey.DEPARTMENT, SortKey.EQUIPMENT, SortKey.STATUS];
 
   private readonly destroyRef = inject(DestroyRef);
 
@@ -51,9 +48,5 @@ export class DashboardComponent implements OnInit {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe(search => this.service.filterUsers(search));
-  }
-
-  protected trackUser(_: number, user: User): string {
-    return user.id;
   }
 }

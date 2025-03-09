@@ -19,37 +19,25 @@
     }
 
     @case (Status.SUCCESS) {
-      <table
-        mat-table [dataSource]="vo.userList.items" [trackBy]="trackUser"
-      >
-        <ng-container [matColumnDef]="SortKey.NAME">
-          <th mat-header-cell *matHeaderCellDef> Full name </th>
-          <td mat-cell *matCellDef="let user"> {{ user.name }} </td>
-        </ng-container>
+      <div class="app-dashboard-table">
+        <div class="app-dashboard-table__row app-dashboard-table__row_header">
+          <div class="app-dashboard-table__cell">Full name</div>
+          <div class="app-dashboard-table__cell">Email</div>
+          <div class="app-dashboard-table__cell">Department</div>
+          <div class="app-dashboard-table__cell">Equipment</div>
+          <div class="app-dashboard-table__cell">Status</div>
+        </div>
 
-        <ng-container [matColumnDef]="SortKey.EMAIL">
-          <th mat-header-cell *matHeaderCellDef> Email </th>
-          <td mat-cell *matCellDef="let user"> {{ user.email }} </td>
-        </ng-container>
-
-        <ng-container [matColumnDef]="SortKey.DEPARTMENT">
-          <th mat-header-cell *matHeaderCellDef> Department </th>
-          <td mat-cell *matCellDef="let user"> {{ user.department }} </td>
-        </ng-container>
-
-        <ng-container [matColumnDef]="SortKey.EQUIPMENT">
-          <th mat-header-cell *matHeaderCellDef> Equipment </th>
-          <td mat-cell *matCellDef="let user"> {{ user.equipments | equipmentList }} </td>
-        </ng-container>
-
-        <ng-container [matColumnDef]="SortKey.STATUS">
-          <th mat-header-cell *matHeaderCellDef> Status </th>
-          <td mat-cell *matCellDef="let user"> {{ user.status | status }} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="[row.id]"></tr>
-      </table>
+        @for (user of vo.userList.items; track user.id) {
+          <a class="app-dashboard-table__row app-dashboard-table__row_data" [routerLink]="[user.id]">
+            <div class="app-dashboard-table__cell">{{ user.name }}</div>
+            <div class="app-dashboard-table__cell">{{ user.email }}</div>
+            <div class="app-dashboard-table__cell">{{ user.department }}</div>
+            <div class="app-dashboard-table__cell">{{ user.equipments | equipmentList }}</div>
+            <div class="app-dashboard-table__cell">{{ user.status | status }}</div>
+          </a>
+        }
+      </div>
     }
   }
 }
