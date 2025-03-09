@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
 import { debounceTime, distinctUntilChanged, Observable } from 'rxjs';
 import { User } from '../../entities/user/model/user';
 import { Status } from '../../shared/model/status';
@@ -20,7 +21,7 @@ import { SortKey } from './model/sort-key';
   selector: 'app-offboarding',
   imports: [
     MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe, StatusPipe,
-    ReactiveFormsModule, MatSortModule, MatTableModule,
+    ReactiveFormsModule, MatSortModule, MatTableModule, RouterModule,
   ],
   templateUrl: './offboarding.component.html',
   styleUrl: './offboarding.component.scss',
