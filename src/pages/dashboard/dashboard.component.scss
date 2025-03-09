@@ -1,4 +1,4 @@
-:host, .app-onboarding {
+:host, .app-dashboard {
   box-sizing: border-box;
   display: block;
   margin: 0 auto;
@@ -6,13 +6,13 @@
   padding: 20px;
 }
 
-.app-onboarding__header {
+.app-dashboard__header {
   align-items: center;
   display: flex;
   justify-content: space-between;
 }
 
-.app-onboarding__spinner {
+.app-dashboard__spinner {
   margin: 0 auto;
   text-align: center;
 }

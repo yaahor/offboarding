@@ -4,22 +4,22 @@ import { BehaviorSubject, combineLatestWith, map, Observable } from 'rxjs';
 import { UserService } from '../../entities/user/model/user.service';
 import { Status } from '../../shared/model/status';
 import { sortUsers } from './lib/sort-users';
-import { OffboardingVo } from './model/offboarding.vo';
+import { DashboardVo } from './model/dashboard.vo';
 import { Sort } from './model/sort';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OffboardingService {
+export class DashboardService {
   private readonly state$ = new BehaviorSubject<{ search: string, sort?: Sort }>({ search: '' });
 
   constructor(private readonly userService: UserService) { }
 
-  getVo(): Observable<OffboardingVo> {
+  getVo(): Observable<DashboardVo> {
     return this.state$
       .pipe(
         combineLatestWith(this.userService.getUsers()),
-        map(([state, userListState]): OffboardingVo => {
+        map(([state, userListState]): DashboardVo => {
           if (userListState.status !== Status.SUCCESS) {
             return { userList: userListState };
           }

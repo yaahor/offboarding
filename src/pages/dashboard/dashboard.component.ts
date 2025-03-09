@@ -11,27 +11,27 @@ import { RouterModule } from '@angular/router';
 import { debounceTime, distinctUntilChanged, Observable } from 'rxjs';
 import { User } from '../../entities/user/model/user';
 import { Status } from '../../shared/model/status';
-import { OffboardingService } from './offboarding.service';
-import { OffboardingVo } from './model/offboarding.vo';
+import { DashboardService } from './dashboard.service';
+import { DashboardVo } from './model/dashboard.vo';
 import { EquipmentListPipe } from './ui/equipment-list.pipe';
 import { StatusPipe } from './ui/status.pipe';
 import { SortKey } from './model/sort-key';
 
 @Component({
-  selector: 'app-offboarding',
+  selector: 'app-dashboard',
   imports: [
     MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe, StatusPipe,
     ReactiveFormsModule, MatSortModule, MatTableModule, RouterModule,
   ],
-  templateUrl: './offboarding.component.html',
-  styleUrl: './offboarding.component.scss',
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'app-onboarding'
   }
 })
-export class OffboardingComponent implements OnInit {
-  protected vo$?: Observable<OffboardingVo>;
+export class DashboardComponent implements OnInit {
+  protected vo$?: Observable<DashboardVo>;
   protected readonly searchControl = new FormControl();
   protected readonly Status = Status;
   protected readonly SortKey = SortKey;
@@ -39,7 +39,7 @@ export class OffboardingComponent implements OnInit {
 
   private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private service: OffboardingService) {
+  constructor(private service: DashboardService) {
   }
 
   ngOnInit(): void {

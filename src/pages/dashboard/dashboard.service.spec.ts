@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OffboardingService } from './offboarding.service';
+import { DashboardService } from './dashboard.service';
 
-describe(OffboardingService.name, () => {
-  let service: OffboardingService;
+describe(DashboardService.name, () => {
+  let service: DashboardService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(OffboardingService);
+    service = TestBed.inject(DashboardService);
   });
 
   it('should be created', () => {
