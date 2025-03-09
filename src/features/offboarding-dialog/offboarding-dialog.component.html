@@ -71,7 +71,7 @@
 </mat-dialog-content>
 
 @if (offboardingStatus() === Status.LOADING) {
-  <mat-spinner></mat-spinner>
+  <mat-spinner class="app-offboarding-dialog__placeholder"></mat-spinner>
 } @else {
   @if(offboardingStatus() === Status.ERROR) {
     <div class="app-offboarding-dialog__placeholder">An error occurred</div>
