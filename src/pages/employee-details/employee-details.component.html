@@ -1,1 +1,51 @@
-<p>employee-details works!</p>
+<div>
+  <a mat-button routerLink="../">
+    < Back
+  </a>
+</div>
+
+@if (user$ | async; as user) {
+  <div class="app-employee-details__header">
+    <h1>{{ user.name }}</h1>
+
+    @if (user.status === UserStatus.ACTIVE) {
+      <button mat-flat-button type="button">Offboard</button>
+    }
+  </div>
+
+  <section>
+    <h2 class="app-employee-details__subtitle">Employee details</h2>
+
+    <div class="app-employee-details-properties">
+      <div class="app-employee-details-properties__item">
+        <div>Full name</div>
+        <div>{{ user.name }}</div>
+      </div>
+
+      <div class="app-employee-details-properties__item">
+        <div>Email</div>
+        <div>{{ user.email }}</div>
+      </div>
+
+      <div class="app-employee-details-properties__item">
+        <div>Department</div>
+        <div>{{ user.department }}</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="app-employee-details__subtitle">Equipment</h2>
+
+    <table mat-table [dataSource]="user.equipments" [trackBy]="trackEquipment">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Item </th>
+        <td mat-cell *matCellDef="let equipment"> {{ equipment.name }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </section>
+}
+
