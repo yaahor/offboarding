@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of, throwError } from 'rxjs';
+import { UserStatus } from '../model/user-status';
 import { mockUsers } from './mock-users';
+import { OnboardingDto } from './onboarding.dto';
 import { UserDto } from './user.dto';
 
 @Injectable({
@@ -26,5 +28,17 @@ export class UserApiService {
     }
 
     return of(user).pipe(delay(2000));
+  }
+
+  conductOffboarding(userId: string, dto: OnboardingDto): Observable<void> {
+    const user = mockUsers.find(user => user.id === userId);
+
+    if (!user) {
+      return throwError(() => new Error('User not found'));
+    }
+
+    user.status = UserStatus.OFFBOARDED;
+
+    return of(void 0).pipe(delay(2000));
   }
 }
