@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, startWith } from 'rxjs';
+import { mapOffboardingDataToDto } from './map-offboarding-data-to-dto';
+import { OffboardingData } from './offboarding-data';
+import { OffboardingState } from './offboarding.state';
 import { Status } from '../../../shared/model/status';
 import { UserApiService } from '../api/user-api.service';
 import { mapDtoToUser } from './map-dto-to-user';
@@ -44,5 +47,20 @@ export class UserService {
         }),
         startWith<UserState>({ status: Status.LOADING }),
       )
+  }
+
+  conductOffboarding(userId: string, data: OffboardingData): Observable<OffboardingState> {
+    const dto = mapOffboardingDataToDto(data);
+
+    return this.userApiService.conductOffboarding(userId, dto)
+      .pipe(
+        map((): OffboardingState => {
+          return { status: Status.SUCCESS };
+        }),
+        catchError((): Observable<OffboardingState> => {
+          return of({ status: Status.ERROR });
+        }),
+        startWith<OffboardingState>({ status: Status.LOADING }),
+      );
   }
 }
