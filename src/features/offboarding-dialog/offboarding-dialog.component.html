@@ -1,0 +1,84 @@
+<h2 mat-dialog-title>
+  Offboard
+</h2>
+
+<mat-dialog-content>
+  <form class="app-offboarding-dialog-form" [formGroup]="formGroup" (focusout)="onFormFocusOut()">
+    <mat-form-field class="app-offboarding-dialog-form__control app-offboarding-dialog-form__control_full">
+      <input matInput placeholder="Receiver*" [formControlName]="ControlName.RECEIVER" />
+
+      @if (errorMessages()[ControlName.RECEIVER]; as message) {
+        <mat-error>{{ message }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="app-offboarding-dialog-form__control app-offboarding-dialog-form__control_full">
+      <input matInput placeholder="Email*" [formControlName]="ControlName.EMAIL"/>
+
+      @if (errorMessages()[ControlName.EMAIL]; as message) {
+        <mat-error>{{ message }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="app-offboarding-dialog-form__control app-offboarding-dialog-form__control_full">
+      <input matInput placeholder="Phone*" [formControlName]="ControlName.PHONE"/>
+
+      @if (errorMessages()[ControlName.PHONE]; as message) {
+        <mat-error>{{ message }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="app-offboarding-dialog-form__control app-offboarding-dialog-form__control_full">
+      <input matInput placeholder="Street line*" [formControlName]="ControlName.STREET"/>
+
+      @if (errorMessages()[ControlName.STREET]; as message) {
+        <mat-error>{{ message }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="app-offboarding-dialog-form__control">
+      <input matInput placeholder="City*" [formControlName]="ControlName.CITY"/>
+
+      @if (errorMessages()[ControlName.CITY]; as message) {
+        <mat-error>{{ message }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="app-offboarding-dialog-form__control">
+      <input matInput placeholder="Postal code*" [formControlName]="ControlName.POSTAL_CODE"/>
+
+      @if (errorMessages()[ControlName.POSTAL_CODE]; as message) {
+        <mat-error>{{ message }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="app-offboarding-dialog-form__control app-offboarding-dialog-form__control_full">
+      <input matInput placeholder="Country*" [formControlName]="ControlName.COUNTRY"/>
+
+      @if (errorMessages()[ControlName.COUNTRY]; as message) {
+        <mat-error>{{ message }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="app-offboarding-dialog-form__control app-offboarding-dialog-form__control_full">
+      <input matInput placeholder="Notes" [formControlName]="ControlName.NOTE"/>
+
+      @if (errorMessages()[ControlName.NOTE]; as message) {
+        <mat-error>{{ message }}</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+
+  <button
+    [disabled]="formGroup.invalid"
+    mat-button
+    mat-dialog-close
+    (click)="onConfirmClick()"
+  >
+    Confirm
+  </button>
+</mat-dialog-actions>

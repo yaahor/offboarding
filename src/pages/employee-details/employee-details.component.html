@@ -17,7 +17,13 @@
         <h1>{{ vo.user.name }}</h1>
 
         @if (vo.user.status === UserStatus.ACTIVE) {
-          <button mat-flat-button type="button">Offboard</button>
+          <button
+            type="button"
+            mat-flat-button
+            (click)="onOffboardClick()"
+          >
+            Offboard
+          </button>
         }
       </div>
 

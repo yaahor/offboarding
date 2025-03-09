@@ -1,0 +1,15 @@
+:host, .app-offboarding-dialog {
+  display: block;
+}
+
+//region .app-offboarding-dialog-form
+.app-offboarding-dialog-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.app-offboarding-dialog-form__control_full {
+  grid-column: span 2;
+}
+//endregion
