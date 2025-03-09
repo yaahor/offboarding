@@ -24,7 +24,12 @@ export class DashboardService {
             return { userList: userListState };
           }
 
-          const users = userListState.items.filter(user => user.searchable.includes(state.search.toLowerCase()));
+          const users = userListState.items.filter(user => {
+            const lowerSearch = state.search.toLocaleLowerCase();
+
+            return user.name.toLocaleLowerCase().includes(lowerSearch) ||
+              user.department.toLocaleLowerCase().toLocaleLowerCase(lowerSearch);
+          });
 
           if (state.sort) {
             sortUsers(users, state.sort);
