@@ -28,7 +28,7 @@ export class DashboardService {
             const lowerSearch = state.search.toLocaleLowerCase();
 
             return user.name.toLocaleLowerCase().includes(lowerSearch) ||
-              user.department.toLocaleLowerCase().toLocaleLowerCase(lowerSearch);
+              user.department.toLocaleLowerCase().includes(lowerSearch);
           });
 
           if (state.sort) {
