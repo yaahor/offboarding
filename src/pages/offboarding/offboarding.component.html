@@ -11,7 +11,7 @@
 @if (vo$ | async; as vo) {
   @switch (vo.userList.status) {
     @case (Status.LOADING) {
-      <mat-spinner></mat-spinner>
+      <mat-spinner class="app-onboarding__spinner"></mat-spinner>
     }
 
     @case (Status.ERROR) {
