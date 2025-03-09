@@ -19,24 +19,37 @@
     }
 
     @case (Status.SUCCESS) {
-      <table class="app-onboarding__table" matSort (matSortChange)="onSortChange($event)">
-        <tr>
-          <th [mat-sort-header]="SortKey.NAME">Full name</th>
-          <th [mat-sort-header]="SortKey.EMAIL">Email</th>
-          <th [mat-sort-header]="SortKey.DEPARTMENT">Department</th>
-          <th [mat-sort-header]="SortKey.EQUIPMENT">Equipment</th>
-          <th [mat-sort-header]="SortKey.STATUS">Status</th>
-        </tr>
+      <table
+        mat-table [dataSource]="vo.userList.items" [trackBy]="trackUser"
+        matSort (matSortChange)="onSortChange($event)"
+      >
+        <ng-container [matColumnDef]="SortKey.NAME">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Full name </th>
+          <td mat-cell *matCellDef="let user"> {{ user.name }} </td>
+        </ng-container>
 
-        @for (user of vo.userList.items; track user.id) {
-          <tr>
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.department }}</td>
-            <td>{{ user.equipments | equipmentList }}</td>
-            <td>{{ user.status | status }}</td>
-          </tr>
-        }
+        <ng-container [matColumnDef]="SortKey.EMAIL">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let user"> {{ user.email }} </td>
+        </ng-container>
+
+        <ng-container [matColumnDef]="SortKey.DEPARTMENT">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+          <td mat-cell *matCellDef="let user"> {{ user.department }} </td>
+        </ng-container>
+
+        <ng-container [matColumnDef]="SortKey.EQUIPMENT">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Equipment </th>
+          <td mat-cell *matCellDef="let user"> {{ user.equipments | equipmentList }} </td>
+        </ng-container>
+
+        <ng-container [matColumnDef]="SortKey.STATUS">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let user"> {{ user.status | status }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     }
   }

@@ -6,7 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule, Sort } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { debounceTime, distinctUntilChanged, Observable } from 'rxjs';
+import { User } from '../../entities/user/model/user';
 import { Status } from '../../shared/model/status';
 import { OffboardingService } from './offboarding.service';
 import { OffboardingVo } from './model/offboarding.vo';
@@ -18,7 +20,7 @@ import { SortKey } from './model/sort-key';
   selector: 'app-offboarding',
   imports: [
     MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe, StatusPipe,
-    ReactiveFormsModule, MatSortModule,
+    ReactiveFormsModule, MatSortModule, MatTableModule,
   ],
   templateUrl: './offboarding.component.html',
   styleUrl: './offboarding.component.scss',
@@ -32,6 +34,7 @@ export class OffboardingComponent implements OnInit {
   protected readonly searchControl = new FormControl();
   protected readonly Status = Status;
   protected readonly SortKey = SortKey;
+  protected readonly displayedColumns: string[] = [SortKey.NAME, SortKey.EMAIL, SortKey.DEPARTMENT, SortKey.EQUIPMENT, SortKey.STATUS];
 
   private readonly destroyRef = inject(DestroyRef);
 
@@ -52,5 +55,9 @@ export class OffboardingComponent implements OnInit {
 
   protected onSortChange(sort: Sort): void {
     this.service.sortUsers(sort);
+  }
+
+  protected trackUser(_: number, user: User): string {
+    return user.id;
   }
 }
