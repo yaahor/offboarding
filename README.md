@@ -44,12 +44,16 @@
   - `<a>` tags are used as table rows for **better usability** (e.g., opening in a new tab).
   - **Column sorting** was initially implemented based on a triangle icon in the example screen but was later **removed** as it wasn't required.
   - **Virtual scroll, pagination, or infinite scroll** can be added to the employee table if required.
+  - **Loading spinner** is displayed while data is being fetched.
+  - **Error message** is shown if there is an issue loading the data.
 
 
 - **Employee Details Page**
   - Includes a **Back button** that navigates the user back to the **Dashboard Page**.
   - The **Offboard button** is displayed if the user status is **active**.
   - For offboarded users, the button is **hidden**, or instead, the message **"User is offboarded"** is displayed.
+  - **Loading spinner** is displayed while data is being fetched.
+  - **Error message** is shown if there is an issue loading the data.
 
 ## Features
 
