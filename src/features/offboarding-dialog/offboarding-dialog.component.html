@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <mat-form-field class="app-offboarding-dialog-form__control app-offboarding-dialog-form__control_full">
-      <input matInput placeholder="Email*" [formControlName]="ControlName.EMAIL"/>
+      <input matInput type="email" placeholder="Email*" [formControlName]="ControlName.EMAIL"/>
 
       @if (errorMessages()[ControlName.EMAIL]; as message) {
         <mat-error>{{ message }}</mat-error>
@@ -21,7 +21,7 @@
     </mat-form-field>
 
     <mat-form-field class="app-offboarding-dialog-form__control app-offboarding-dialog-form__control_full">
-      <input matInput placeholder="Phone*" [formControlName]="ControlName.PHONE"/>
+      <input matInput type="tel" placeholder="Phone*" [formControlName]="ControlName.PHONE"/>
 
       @if (errorMessages()[ControlName.PHONE]; as message) {
         <mat-error>{{ message }}</mat-error>
@@ -61,7 +61,7 @@
     </mat-form-field>
 
     <mat-form-field class="app-offboarding-dialog-form__control app-offboarding-dialog-form__control_full">
-      <input matInput placeholder="Notes" [formControlName]="ControlName.NOTE"/>
+      <textarea matInput placeholder="Notes" [formControlName]="ControlName.NOTE"></textarea>
 
       @if (errorMessages()[ControlName.NOTE]; as message) {
         <mat-error>{{ message }}</mat-error>
