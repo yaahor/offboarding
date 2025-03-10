@@ -1,59 +1,64 @@
 # Offboarding
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+## How to Run
 
-## Development server
+1. **Clone the repository**
+    ```sh
+    git clone git@github.com:yaahor/offboarding.git
+    cd offboarding
+    ```
 
-To start a local development server, run:
+2. **Install dependencies**
+    ```sh
+    npm install
+    ```
 
-```bash
-ng serve
-```
+3. **Run the mock server**
+    ```sh
+    npm run mock-server
+    ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. **Start the Angular application**
+    ```sh
+    npm run start
+    ```
 
-## Code scaffolding
+5. **Open in the browser** [http://localhost:4200](http://localhost:4200)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+## Notes
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- The project **is not fully styled**; styles can be improved if needed.
+- The **mock server has a 2-second delay** to simulate a slow connection.
+- For **state management**, **ready-made solutions** can be used if required. In this case, a simple implementation using **BehaviorSubject** has been implemented.
+- - **Tests have been added for `UserApiService` and `UserService`** just as an example.
 
-```bash
-ng generate --help
-```
 
-## Building
+## Description
 
-To build the project run:
+### Pages:
+- **Dashboard Page**
+  - A search field allows users to search for employees in the table by name and department.
+  - The filtering process uses `toLowerCase()` for **case-insensitive comparison**.
+  - A debounce mechanism is implemented to **prevent excessive filtering on each keystroke**.
+  - `<a>` tags are used as table rows for **better usability** (e.g., opening in a new tab).
+  - **Column sorting** was initially implemented based on a triangle icon in the example screen but was later **removed** as it wasn't required.
+  - **Virtual scroll, pagination, or infinite scroll** can be added to the employee table if required.
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- **Employee Details Page**
+  - Includes a **Back button** that navigates the user back to the **Dashboard Page**.
+  - The **Offboard button** is displayed if the user status is **active**.
+  - For offboarded users, the button is **hidden**, or instead, the message **"User is offboarded"** is displayed.
 
-## Running unit tests
+## Features
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- **Offboarding Dialog**
+  - All fields are required and validated, except for the **Notes** field.
+  - After pressing the **Confirm** button, a request is sent to offboard the employee.
+  - While the request is being processed, a **loading spinner** is displayed.
+  - If there is an error, an **error message** is shown.
+  - After a successful offboarding, the user is navigated back to the **Dashboard Page**.
+  - The **employee list** is updated without the need to reload the page.
+  - The offboarding **form is simple** but can be improved if necessary (e.g., adding a **select for countries**, validation depending on already filled fields, etc.).
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
