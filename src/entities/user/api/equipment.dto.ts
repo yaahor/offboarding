@@ -1,4 +1,4 @@
 export interface EquipmentDto {
-  id: string,
+  id: string;
   name: string;
 }

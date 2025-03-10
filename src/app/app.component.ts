@@ -10,7 +10,7 @@ import { RouterOutlet } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'app',
-  }
+  },
 })
 export class AppComponent {
   title = 'offboarding';

@@ -23,7 +23,7 @@ describe(UserService.name, () => {
     email: 'test@example.com',
     department: 'Test Department',
     equipments: [{ id: 'eq1', name: 'Test Equipment' }],
-    status: 'ACTIVE'
+    status: 'ACTIVE',
   };
 
   const mockUser: User = {
@@ -36,13 +36,19 @@ describe(UserService.name, () => {
   };
 
   beforeEach(() => {
-    const spy = jasmine.createSpyObj('UserApiService', ['getUsers', 'getUser', 'conductOffboarding']);
+    const spy = jasmine.createSpyObj('UserApiService', [
+      'getUsers',
+      'getUser',
+      'conductOffboarding',
+    ]);
 
     TestBed.configureTestingModule({
       providers: [{ provide: UserApiService, useValue: spy }],
     });
     service = TestBed.inject(UserService);
-    userApiServiceSpy = TestBed.inject(UserApiService) as jasmine.SpyObj<UserApiService>;
+    userApiServiceSpy = TestBed.inject(
+      UserApiService,
+    ) as jasmine.SpyObj<UserApiService>;
   });
 
   it('should be created', () => {
@@ -54,7 +60,7 @@ describe(UserService.name, () => {
       const mockUserDTOs: UserDto[] = [mockUserDTO];
       userApiServiceSpy.getUsers.and.returnValue(of(mockUserDTOs));
 
-      service.getUsers().subscribe(state => {
+      service.getUsers().subscribe((state) => {
         expect(state.status).toBe(Status.SUCCESS);
         expect((state as UserListSuccessState).items).toEqual([mockUser]);
         expect(userApiServiceSpy.getUsers).toHaveBeenCalled();
@@ -68,7 +74,7 @@ describe(UserService.name, () => {
 
       service.getUsers().subscribe(() => {
         userApiServiceSpy.getUsers.calls.reset();
-        service.getUsers().subscribe(state => {
+        service.getUsers().subscribe((state) => {
           expect(state.status).toBe(Status.SUCCESS);
           expect((state as UserListSuccessState).items).toEqual([mockUser]);
           expect(userApiServiceSpy.getUsers).not.toHaveBeenCalled();
@@ -78,9 +84,11 @@ describe(UserService.name, () => {
     });
 
     it('should handle API error', (done) => {
-      userApiServiceSpy.getUsers.and.returnValue(throwError(() => new Error('API error')));
+      userApiServiceSpy.getUsers.and.returnValue(
+        throwError(() => new Error('API error')),
+      );
 
-      service.getUsers().subscribe(state => {
+      service.getUsers().subscribe((state) => {
         expect(state.status).toBe(Status.ERROR);
         expect(userApiServiceSpy.getUsers).toHaveBeenCalled();
         done();
@@ -89,7 +97,9 @@ describe(UserService.name, () => {
 
     it('should emit loading state then correct state', (done) => {
       const mockUserDTOs: UserDto[] = [mockUserDTO];
-      userApiServiceSpy.getUsers.and.returnValue(of(mockUserDTOs).pipe(delay(0)));
+      userApiServiceSpy.getUsers.and.returnValue(
+        of(mockUserDTOs).pipe(delay(0)),
+      );
 
       const states: UserListState[] = [];
 
@@ -100,32 +110,34 @@ describe(UserService.name, () => {
           expect(states[1].status).toBe(Status.SUCCESS);
           done();
         }
-      })
-    })
-
+      });
+    });
   });
 
   describe('getUser', () => {
     it('should fetch user by ID from API', (done) => {
       userApiServiceSpy.getUser.and.returnValue(of(mockUserDTO));
 
-      service.getUser('1')
-        .pipe(filter(state => state.status === Status.SUCCESS))
-        .subscribe(
-          state => {
-            expect(state.status).toBe(Status.SUCCESS);
-            expect((state as UserSuccessState).user).toEqual(mockUser);
-            expect(userApiServiceSpy.getUser).toHaveBeenCalledWith('1');
-            done();
-          });
+      service
+        .getUser('1')
+        .pipe(filter((state) => state.status === Status.SUCCESS))
+        .subscribe((state) => {
+          expect(state.status).toBe(Status.SUCCESS);
+          expect((state as UserSuccessState).user).toEqual(mockUser);
+          expect(userApiServiceSpy.getUser).toHaveBeenCalledWith('1');
+          done();
+        });
     });
 
     it('should handle API error', (done) => {
-      userApiServiceSpy.getUser.and.returnValue(throwError(() => new Error('API error')));
+      userApiServiceSpy.getUser.and.returnValue(
+        throwError(() => new Error('API error')),
+      );
 
-      service.getUser('1')
-        .pipe(filter(state => state.status === Status.ERROR))
-        .subscribe(state => {
+      service
+        .getUser('1')
+        .pipe(filter((state) => state.status === Status.ERROR))
+        .subscribe((state) => {
           expect(state.status).toBe(Status.ERROR);
           expect(userApiServiceSpy.getUser).toHaveBeenCalledWith('1');
           done();
@@ -143,8 +155,8 @@ describe(UserService.name, () => {
           expect(states[1].status).toBe(Status.SUCCESS);
           done();
         }
-      })
-    })
+      });
+    });
   });
 
   describe('conductOffboarding', () => {
@@ -156,16 +168,20 @@ describe(UserService.name, () => {
         streetLine: 'Test Street',
         city: 'Test City',
         postalCode: '12345',
-        country: 'Test Country'
+        country: 'Test Country',
       };
       const mockOffboardingDto = mapOffboardingDataToDto(mockOffboardingData);
       userApiServiceSpy.conductOffboarding.and.returnValue(of(void 0));
 
-      service.conductOffboarding('1', mockOffboardingData)
-        .pipe(filter(state => state.status === Status.SUCCESS))
-        .subscribe(state => {
+      service
+        .conductOffboarding('1', mockOffboardingData)
+        .pipe(filter((state) => state.status === Status.SUCCESS))
+        .subscribe((state) => {
           expect(state.status).toBe(Status.SUCCESS);
-          expect(userApiServiceSpy.conductOffboarding).toHaveBeenCalledWith('1', mockOffboardingDto);
+          expect(userApiServiceSpy.conductOffboarding).toHaveBeenCalledWith(
+            '1',
+            mockOffboardingDto,
+          );
           done();
         });
     });
@@ -178,13 +194,16 @@ describe(UserService.name, () => {
         streetLine: 'Test Street',
         city: 'Test City',
         postalCode: '12345',
-        country: 'Test Country'
+        country: 'Test Country',
       };
-      userApiServiceSpy.conductOffboarding.and.returnValue(throwError(() => new Error('API error')));
+      userApiServiceSpy.conductOffboarding.and.returnValue(
+        throwError(() => new Error('API error')),
+      );
 
-      service.conductOffboarding('1', mockOffboardingData)
-        .pipe(filter(state => state.status === Status.ERROR))
-        .subscribe(state => {
+      service
+        .conductOffboarding('1', mockOffboardingData)
+        .pipe(filter((state) => state.status === Status.ERROR))
+        .subscribe((state) => {
           expect(state.status).toBe(Status.ERROR);
           expect(userApiServiceSpy.conductOffboarding).toHaveBeenCalled();
           done();
@@ -198,18 +217,20 @@ describe(UserService.name, () => {
         streetLine: 'Test Street',
         city: 'Test City',
         postalCode: '12345',
-        country: 'Test Country'
+        country: 'Test Country',
       };
       userApiServiceSpy.conductOffboarding.and.returnValue(of(void 0));
       const states: OffboardingState[] = [];
-      service.conductOffboarding('1', mockOffboardingData).subscribe((state) => {
-        states.push(state);
-        if (states.length === 2) {
-          expect(states[0].status).toBe(Status.LOADING);
-          expect(states[1].status).toBe(Status.SUCCESS);
-          done();
-        }
-      })
-    })
+      service
+        .conductOffboarding('1', mockOffboardingData)
+        .subscribe((state) => {
+          states.push(state);
+          if (states.length === 2) {
+            expect(states[0].status).toBe(Status.LOADING);
+            expect(states[1].status).toBe(Status.SUCCESS);
+            done();
+          }
+        });
+    });
   });
 });

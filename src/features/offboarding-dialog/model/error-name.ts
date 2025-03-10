@@ -5,5 +5,5 @@ export enum ErrorName {
   PHONE = 'phone',
   POSTAL_CODE = 'postalCode',
   REQUIRED = 'required',
-  STREET_LINE = 'streetLine'
+  STREET_LINE = 'streetLine',
 }

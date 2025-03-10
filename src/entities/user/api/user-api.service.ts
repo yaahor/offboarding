@@ -8,11 +8,10 @@ import { UserDto } from './user.dto';
 const apiUrl = `http://localhost:${mockServerPort}`;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserApiService {
-  constructor(private readonly httpClient: HttpClient) {
-  }
+  constructor(private readonly httpClient: HttpClient) {}
 
   /**
    * Retrieves a list of users.
@@ -29,7 +28,8 @@ export class UserApiService {
   }
 
   conductOffboarding(userId: string, dto: OnboardingDto): Observable<void> {
-    return this.httpClient.post<void>(`${apiUrl}/users/${userId}/offboard`, dto)
+    return this.httpClient
+      .post<void>(`${apiUrl}/users/${userId}/offboard`, dto)
       .pipe(map(() => void 0));
   }
 }

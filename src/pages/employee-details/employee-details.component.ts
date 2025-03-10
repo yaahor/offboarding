@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -17,10 +22,16 @@ import { EmployeeDetailsVo } from './model/employee-details.vo';
 
 @Component({
   selector: 'app-employee-details',
-  imports: [CommonModule, MatButtonModule, RouterModule, MatTableModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    RouterModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './employee-details.component.html',
   styleUrl: './employee-details.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeDetailsComponent implements OnInit {
   protected readonly displayedColumns: string[] = ['name'];
@@ -29,18 +40,19 @@ export class EmployeeDetailsComponent implements OnInit {
   protected vo$?: Observable<EmployeeDetailsVo>;
   private readonly dialog = inject(MatDialog);
 
-  constructor(private readonly route: ActivatedRoute, private readonly service: EmployeeDetailsService) {
-  }
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly service: EmployeeDetailsService,
+  ) {}
 
   ngOnInit(): void {
-    this.vo$ = this.route.params
-      .pipe(
-        switchMap((params) => {
-          const userId = params[RouteParam.EMPLOYEE_ID];
+    this.vo$ = this.route.params.pipe(
+      switchMap((params) => {
+        const userId = params[RouteParam.EMPLOYEE_ID];
 
-          return this.service.getVo(userId);
-        }),
-      )
+        return this.service.getVo(userId);
+      }),
+    );
   }
 
   protected trackEquipment(_: number, equipment: Equipment): string {
@@ -48,6 +60,9 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   protected onOffboardClick(user: User): void {
-    this.dialog.open(OffboardingDialogComponent, { data: user, closeOnNavigation: true });
+    this.dialog.open(OffboardingDialogComponent, {
+      data: user,
+      closeOnNavigation: true,
+    });
   }
 }

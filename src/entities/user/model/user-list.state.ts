@@ -1,7 +1,10 @@
 import { Status } from '../../../shared/model/status';
 import { User } from './user';
 
-export type UserListState = UserListErrorState | UserListLoadingState | UserListSuccessState;
+export type UserListState =
+  | UserListErrorState
+  | UserListLoadingState
+  | UserListSuccessState;
 
 export interface UserListErrorState {
   status: Status.ERROR;

@@ -16,8 +16,7 @@ describe(OffboardingDialogComponent.name, () => {
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: {} },
       ],
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(OffboardingDialogComponent);
     component = fixture.componentInstance;

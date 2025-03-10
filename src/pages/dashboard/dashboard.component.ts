@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,15 +22,21 @@ import { StatusPipe } from './ui/status.pipe';
 @Component({
   selector: 'app-dashboard',
   imports: [
-    MatProgressSpinnerModule, CommonModule, MatFormFieldModule, MatInputModule, EquipmentListPipe, StatusPipe,
-    ReactiveFormsModule, RouterModule,
+    MatProgressSpinnerModule,
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    EquipmentListPipe,
+    StatusPipe,
+    ReactiveFormsModule,
+    RouterModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'app-onboarding'
-  }
+    class: 'app-onboarding',
+  },
 })
 export class DashboardComponent implements OnInit {
   protected vo$?: Observable<DashboardVo>;
@@ -33,8 +45,7 @@ export class DashboardComponent implements OnInit {
 
   private readonly destroyRef = inject(DestroyRef);
 
-  constructor(private service: DashboardService) {
-  }
+  constructor(private service: DashboardService) {}
 
   ngOnInit(): void {
     this.vo$ = this.service.getVo();
@@ -45,6 +56,6 @@ export class DashboardComponent implements OnInit {
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe(search => this.service.filterUsers(search));
+      .subscribe((search) => this.service.filterUsers(search));
   }
 }

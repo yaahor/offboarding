@@ -6,6 +6,8 @@ export function postalCodeValidator(): ValidatorFn {
     const value = control.value;
 
     const postalCodeRegex = /^[A-Za-z0-9\s-]{3,10}$/; // Alphanumeric, spaces, -
-    return postalCodeRegex.test(value) ? null : { [ErrorName.POSTAL_CODE]: true };
+    return postalCodeRegex.test(value)
+      ? null
+      : { [ErrorName.POSTAL_CODE]: true };
   };
 }

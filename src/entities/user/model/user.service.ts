@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, filter, map, Observable, of, startWith, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  filter,
+  map,
+  Observable,
+  of,
+  startWith,
+  tap,
+} from 'rxjs';
 import { Status } from '../../../shared/model/status';
 import { UserApiService } from '../api/user-api.service';
 import { isUserListSuccessState } from './is-user-list-success-state';
@@ -12,10 +21,12 @@ import { UserStatus } from './user-status';
 import { UserState } from './user.state';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  private readonly userListState$ = new BehaviorSubject<UserListState | undefined>(undefined);
+  private readonly userListState$ = new BehaviorSubject<
+    UserListState | undefined
+  >(undefined);
 
   constructor(private readonly userApiService: UserApiService) {}
 
@@ -31,11 +42,10 @@ export class UserService {
       this._getUsers();
     }
 
-    return this.userListState$
-      .pipe(
-        // Filter out undefined values
-        filter((state): state is UserListState => !!state),
-      );
+    return this.userListState$.pipe(
+      // Filter out undefined values
+      filter((state): state is UserListState => !!state),
+    );
   }
 
   /**
@@ -45,21 +55,20 @@ export class UserService {
    * @returns An observable of the user state.
    */
   getUser(id: string): Observable<UserState> {
-    return this.userApiService.getUser(id)
-      .pipe(
-        map((dto) => {
-          const user = mapDtoToUser(dto);
+    return this.userApiService.getUser(id).pipe(
+      map((dto) => {
+        const user = mapDtoToUser(dto);
 
-          // Return success state
-          return { status: Status.SUCCESS, user };
-        }),
-        catchError((): Observable<UserState> => {
-          // Return error state
-          return of({ status: Status.ERROR });
-        }),
-        // Start with loading state
-        startWith<UserState>({ status: Status.LOADING }),
-      )
+        // Return success state
+        return { status: Status.SUCCESS, user };
+      }),
+      catchError((): Observable<UserState> => {
+        // Return error state
+        return of({ status: Status.ERROR });
+      }),
+      // Start with loading state
+      startWith<UserState>({ status: Status.LOADING }),
+    );
   }
 
   /**
@@ -70,33 +79,36 @@ export class UserService {
    * @param data The offboarding data to be processed.
    * @returns An observable of the offboarding state.
    */
-  conductOffboarding(userId: string, data: OffboardingData): Observable<OffboardingState> {
+  conductOffboarding(
+    userId: string,
+    data: OffboardingData,
+  ): Observable<OffboardingState> {
     const dto = mapOffboardingDataToDto(data);
 
-    return this.userApiService.conductOffboarding(userId, dto)
-      .pipe(
-        tap(() => {
-          // Update user status
-          this.updateUserStatus(userId, UserStatus.OFFBOARDED);
-        }),
-        map((): OffboardingState => {
-          // Return success state
-          return { status: Status.SUCCESS };
-        }),
-        catchError((): Observable<OffboardingState> => {
-          // Return error state
-          return of({ status: Status.ERROR });
-        }),
-        // Start with loading state
-        startWith<OffboardingState>({ status: Status.LOADING }),
-      );
+    return this.userApiService.conductOffboarding(userId, dto).pipe(
+      tap(() => {
+        // Update user status
+        this.updateUserStatus(userId, UserStatus.OFFBOARDED);
+      }),
+      map((): OffboardingState => {
+        // Return success state
+        return { status: Status.SUCCESS };
+      }),
+      catchError((): Observable<OffboardingState> => {
+        // Return error state
+        return of({ status: Status.ERROR });
+      }),
+      // Start with loading state
+      startWith<OffboardingState>({ status: Status.LOADING }),
+    );
   }
 
   /**
    * Fetches the list of users from the API and updates the store.
    */
   private _getUsers(): void {
-    this.userApiService.getUsers()
+    this.userApiService
+      .getUsers()
       .pipe(
         map((DTOs) => {
           // Map DTOs to users
@@ -111,7 +123,7 @@ export class UserService {
         // Start with loading state
         startWith<UserListState>({ status: Status.LOADING }),
       )
-      .subscribe(state => {
+      .subscribe((state) => {
         // Update user list state
         this.userListState$.next(state);
       });
@@ -133,7 +145,7 @@ export class UserService {
     }
 
     // Update users
-    const users = userListState.items.map(user => {
+    const users = userListState.items.map((user) => {
       if (user.id === userId) {
         return { ...user, status };
       }

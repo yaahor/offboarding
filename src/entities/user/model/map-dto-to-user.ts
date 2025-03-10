@@ -4,7 +4,8 @@ import { User } from './user';
 import { UserStatus } from './user-status';
 
 export function mapDtoToUser(dto: UserDto): User {
-  const status = dto.status === 'ACTIVE' ? UserStatus.ACTIVE : UserStatus.OFFBOARDED;
+  const status =
+    dto.status === 'ACTIVE' ? UserStatus.ACTIVE : UserStatus.OFFBOARDED;
 
   return {
     id: dto.id,
@@ -13,5 +14,5 @@ export function mapDtoToUser(dto: UserDto): User {
     status: status,
     email: dto.email,
     equipments: dto.equipments.map(mapDtoToEquipment),
-  }
+  };
 }

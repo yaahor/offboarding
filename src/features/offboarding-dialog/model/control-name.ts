@@ -8,4 +8,3 @@ export enum ControlName {
   COUNTRY = 'country',
   NOTE = 'note',
 }
-

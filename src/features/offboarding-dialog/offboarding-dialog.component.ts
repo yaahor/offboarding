@@ -1,8 +1,25 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, model, OnInit, signal, } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  inject,
+  model,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -24,13 +41,21 @@ import { OffboardingDialogService } from './offboarding-dialog.service';
 
 @Component({
   selector: 'app-offboarding-dialog',
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, ReactiveFormsModule, MatProgressSpinnerModule],
+  imports: [
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './offboarding-dialog.component.html',
   styleUrl: './offboarding-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'app-offboarding-dialog'
-  }
+    class: 'app-offboarding-dialog',
+  },
 })
 export class OffboardingDialogComponent implements OnInit {
   protected readonly ControlName = ControlName;
@@ -40,12 +65,30 @@ export class OffboardingDialogComponent implements OnInit {
 
   protected readonly formGroup = new FormGroup({
     [ControlName.RECEIVER]: new FormControl('', [Validators.required]),
-    [ControlName.EMAIL]: new FormControl('', [Validators.required, Validators.email]),
-    [ControlName.PHONE]: new FormControl('', [Validators.required, phoneValidator()]),
-    [ControlName.STREET]: new FormControl('', [Validators.required, streetLineValidator()]),
-    [ControlName.CITY]: new FormControl('', [Validators.required, cityValidator()]),
-    [ControlName.POSTAL_CODE]: new FormControl('', [Validators.required, postalCodeValidator()]),
-    [ControlName.COUNTRY]: new FormControl('', [Validators.required, countryNameValidator()]),
+    [ControlName.EMAIL]: new FormControl('', [
+      Validators.required,
+      Validators.email,
+    ]),
+    [ControlName.PHONE]: new FormControl('', [
+      Validators.required,
+      phoneValidator(),
+    ]),
+    [ControlName.STREET]: new FormControl('', [
+      Validators.required,
+      streetLineValidator(),
+    ]),
+    [ControlName.CITY]: new FormControl('', [
+      Validators.required,
+      cityValidator(),
+    ]),
+    [ControlName.POSTAL_CODE]: new FormControl('', [
+      Validators.required,
+      postalCodeValidator(),
+    ]),
+    [ControlName.COUNTRY]: new FormControl('', [
+      Validators.required,
+      countryNameValidator(),
+    ]),
     [ControlName.NOTE]: new FormControl(''),
   });
 
@@ -54,15 +97,14 @@ export class OffboardingDialogComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly dialogRef = inject(MatDialogRef);
 
-  constructor(private readonly service: OffboardingDialogService, private readonly router: Router) {
-  }
+  constructor(
+    private readonly service: OffboardingDialogService,
+    private readonly router: Router,
+  ) {}
 
   ngOnInit(): void {
     merge(this.formGroup.statusChanges, this.formGroup.valueChanges, this.blur$)
-      .pipe(
-        debounceTime(300),
-        takeUntilDestroyed(this.destroyRef),
-      )
+      .pipe(debounceTime(300), takeUntilDestroyed(this.destroyRef))
       .subscribe(() => {
         const messages = getMessages(this.formGroup);
         this.errorMessages.set(messages);
@@ -76,12 +118,13 @@ export class OffboardingDialogComponent implements OnInit {
   protected onConfirmClick(): void {
     const data = this.formGroup.value as OffboardingData;
 
-    this.service.conductOffboarding(this.user?.id, data)
+    this.service
+      .conductOffboarding(this.user?.id, data)
       .pipe(
         tap((state) => {
           this.offboardingStatus.set(state.status);
         }),
-        filter(state => state.status === Status.SUCCESS),
+        filter((state) => state.status === Status.SUCCESS),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe(() => {

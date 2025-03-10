@@ -15,8 +15,7 @@ describe(EmployeeDetailsComponent.name, () => {
         provideRouter([]),
         { provide: EmployeeDetailsService, useValue: {} },
       ],
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EmployeeDetailsComponent);
     component = fixture.componentInstance;

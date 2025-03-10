@@ -10,9 +10,13 @@ describe(DashboardComponent.name, () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DashboardComponent],
-      providers: [{ provide: DashboardService, useValue: createSpyObj(DashboardService.name, ['getVo']) }],
-    })
-    .compileComponents();
+      providers: [
+        {
+          provide: DashboardService,
+          useValue: createSpyObj(DashboardService.name, ['getVo']),
+        },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;

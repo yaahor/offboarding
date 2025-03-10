@@ -5,32 +5,35 @@ import { Status } from '../../shared/model/status';
 import { DashboardVo } from './model/dashboard.vo';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DashboardService {
-  private readonly state$ = new BehaviorSubject<{ search: string }>({ search: '' });
+  private readonly state$ = new BehaviorSubject<{ search: string }>({
+    search: '',
+  });
 
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) {}
 
   getVo(): Observable<DashboardVo> {
-    return this.state$
-      .pipe(
-        combineLatestWith(this.userService.getUsers()),
-        map(([state, userListState]): DashboardVo => {
-          if (userListState.status !== Status.SUCCESS) {
-            return { userList: userListState };
-          }
+    return this.state$.pipe(
+      combineLatestWith(this.userService.getUsers()),
+      map(([state, userListState]): DashboardVo => {
+        if (userListState.status !== Status.SUCCESS) {
+          return { userList: userListState };
+        }
 
-          const users = userListState.items.filter(user => {
-            const lowerSearch = state.search.toLowerCase();
+        const users = userListState.items.filter((user) => {
+          const lowerSearch = state.search.toLowerCase();
 
-            return user.name.toLowerCase().includes(lowerSearch) ||
-              user.department.toLowerCase().includes(lowerSearch);
-          });
+          return (
+            user.name.toLowerCase().includes(lowerSearch) ||
+            user.department.toLowerCase().includes(lowerSearch)
+          );
+        });
 
-          return { userList: { status: Status.SUCCESS, items: users } };
-        }),
-      );
+        return { userList: { status: Status.SUCCESS, items: users } };
+      }),
+    );
   }
 
   filterUsers(search: string): void {
@@ -42,6 +45,6 @@ export class DashboardService {
     }
 
     // Update the state with the new search value
-    return this.state$.next({ ...state, search })
+    return this.state$.next({ ...state, search });
   }
 }

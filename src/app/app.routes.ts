@@ -12,5 +12,5 @@ export const routes: Routes = [
     path: `:${RouteParam.EMPLOYEE_ID}`,
     component: EmployeeDetailsComponent,
   },
-  { path: '**', redirectTo: '', }
+  { path: '**', redirectTo: '' },
 ];

@@ -5,13 +5,15 @@ import { OffboardingData } from '../../entities/user/model/offboarding-data';
 import { OffboardingState } from '../../entities/user/model/offboarding.state';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OffboardingDialogService {
+  constructor(private readonly userService: UserService) {}
 
-  constructor(private readonly userService: UserService) { }
-
-  conductOffboarding(userId: string, data: OffboardingData): Observable<OffboardingState> {
+  conductOffboarding(
+    userId: string,
+    data: OffboardingData,
+  ): Observable<OffboardingState> {
     return this.userService.conductOffboarding(userId, data);
   }
 }

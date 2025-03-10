@@ -4,7 +4,7 @@ import { UserService } from '../../entities/user/model/user.service';
 import { EmployeeDetailsVo } from './model/employee-details.vo';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmployeeDetailsService {
   constructor(private readonly userService: UserService) {}

@@ -9,8 +9,8 @@ export const mockUsers: UserDto[] = [
     email: 'user1@example.com',
     equipments: [
       { id: 'aaa123456', name: 'Macbook Air' },
-      { id: 'aaa123457', name: 'Magic Mouse' }
-    ]
+      { id: 'aaa123457', name: 'Magic Mouse' },
+    ],
   },
   {
     id: 'vvv1324',
@@ -20,8 +20,8 @@ export const mockUsers: UserDto[] = [
     email: 'user2@example.com',
     equipments: [
       { id: 'aaa123458', name: 'Macbook Pro' },
-      { id: 'aaa123459', name: 'Magic Keyboard' }
-    ]
+      { id: 'aaa123459', name: 'Magic Keyboard' },
+    ],
   },
   {
     id: 'vvv1325',
@@ -31,8 +31,8 @@ export const mockUsers: UserDto[] = [
     email: 'user3@example.com',
     equipments: [
       { id: 'aaa123460', name: 'iPhone 13' },
-      { id: 'aaa123461', name: 'Apple Watch' }
-    ]
+      { id: 'aaa123461', name: 'Apple Watch' },
+    ],
   },
   {
     id: 'vvv1326',
@@ -40,9 +40,7 @@ export const mockUsers: UserDto[] = [
     department: 'Engineering',
     status: 'OFFBOARDED',
     email: 'user4@example.com',
-    equipments: [
-      { id: 'aaa123462', name: 'Macbook Air' }
-    ]
+    equipments: [{ id: 'aaa123462', name: 'Macbook Air' }],
   },
   {
     id: 'vvv1327',
@@ -50,9 +48,7 @@ export const mockUsers: UserDto[] = [
     department: 'Sales',
     status: 'ACTIVE',
     email: 'user5@example.com',
-    equipments: [
-      { id: 'aaa123463', name: 'iPad Pro' }
-    ]
+    equipments: [{ id: 'aaa123463', name: 'iPad Pro' }],
   },
   {
     id: 'vvv1328',
@@ -62,8 +58,8 @@ export const mockUsers: UserDto[] = [
     email: 'user6@example.com',
     equipments: [
       { id: 'aaa123464', name: 'Macbook Air' },
-      { id: 'aaa123465', name: 'Magic Mouse' }
-    ]
+      { id: 'aaa123465', name: 'Magic Mouse' },
+    ],
   },
   {
     id: 'vvv1329',
@@ -71,9 +67,7 @@ export const mockUsers: UserDto[] = [
     department: 'Engineering',
     status: 'OFFBOARDED',
     email: 'user7@example.com',
-    equipments: [
-      { id: 'aaa123466', name: 'Macbook Pro' }
-    ]
+    equipments: [{ id: 'aaa123466', name: 'Macbook Pro' }],
   },
   {
     id: 'vvv1330',
@@ -83,8 +77,8 @@ export const mockUsers: UserDto[] = [
     email: 'user8@example.com',
     equipments: [
       { id: 'aaa123467', name: 'Macbook Pro' },
-      { id: 'aaa123468', name: 'AirPods Pro' }
-    ]
+      { id: 'aaa123468', name: 'AirPods Pro' },
+    ],
   },
   {
     id: 'vvv1331',
@@ -92,9 +86,7 @@ export const mockUsers: UserDto[] = [
     department: 'Marketing',
     status: 'OFFBOARDED',
     email: 'user9@example.com',
-    equipments: [
-      { id: 'aaa123469', name: 'iPad Mini' }
-    ]
+    equipments: [{ id: 'aaa123469', name: 'iPad Mini' }],
   },
   {
     id: 'vvv1332',
@@ -102,9 +94,7 @@ export const mockUsers: UserDto[] = [
     department: 'Engineering',
     status: 'ACTIVE',
     email: 'user10@example.com',
-    equipments: [
-      { id: 'aaa123470', name: 'Macbook Air' }
-    ]
+    equipments: [{ id: 'aaa123470', name: 'Macbook Air' }],
   },
   {
     id: 'vvv1333',
@@ -114,8 +104,8 @@ export const mockUsers: UserDto[] = [
     email: 'user11@example.com',
     equipments: [
       { id: 'aaa123471', name: 'iPhone 12' },
-      { id: 'aaa123472', name: 'Apple Watch' }
-    ]
+      { id: 'aaa123472', name: 'Apple Watch' },
+    ],
   },
   {
     id: 'vvv1334',
@@ -123,9 +113,7 @@ export const mockUsers: UserDto[] = [
     department: 'Engineering',
     status: 'OFFBOARDED',
     email: 'user12@example.com',
-    equipments: [
-      { id: 'aaa123473', name: 'Macbook Air' }
-    ]
+    equipments: [{ id: 'aaa123473', name: 'Macbook Air' }],
   },
   {
     id: 'vvv1335',
@@ -135,8 +123,8 @@ export const mockUsers: UserDto[] = [
     email: 'user13@example.com',
     equipments: [
       { id: 'aaa123474', name: 'iPad Pro' },
-      { id: 'aaa123475', name: 'Magic Mouse' }
-    ]
+      { id: 'aaa123475', name: 'Magic Mouse' },
+    ],
   },
   {
     id: 'vvv1336',
@@ -144,9 +132,7 @@ export const mockUsers: UserDto[] = [
     department: 'Marketing',
     status: 'OFFBOARDED',
     email: 'user14@example.com',
-    equipments: [
-      { id: 'aaa123476', name: 'Macbook Air' }
-    ]
+    equipments: [{ id: 'aaa123476', name: 'Macbook Air' }],
   },
   {
     id: 'vvv1337',
@@ -156,8 +142,8 @@ export const mockUsers: UserDto[] = [
     email: 'user15@example.com',
     equipments: [
       { id: 'aaa123477', name: 'Macbook Pro' },
-      { id: 'aaa123478', name: 'AirPods' }
-    ]
+      { id: 'aaa123478', name: 'AirPods' },
+    ],
   },
   {
     id: 'vvv1338',
@@ -165,9 +151,7 @@ export const mockUsers: UserDto[] = [
     department: 'Marketing',
     status: 'ACTIVE',
     email: 'user16@example.com',
-    equipments: [
-      { id: 'aaa123479', name: 'iPhone 11' }
-    ]
+    equipments: [{ id: 'aaa123479', name: 'iPhone 11' }],
   },
   {
     id: 'vvv1339',
@@ -175,9 +159,7 @@ export const mockUsers: UserDto[] = [
     department: 'Sales',
     status: 'OFFBOARDED',
     email: 'user17@example.com',
-    equipments: [
-      { id: 'aaa123480', name: 'iPad Air' }
-    ]
+    equipments: [{ id: 'aaa123480', name: 'iPad Air' }],
   },
   {
     id: 'vvv1340',
@@ -187,8 +169,8 @@ export const mockUsers: UserDto[] = [
     email: 'user18@example.com',
     equipments: [
       { id: 'aaa123481', name: 'Macbook Pro' },
-      { id: 'aaa123482', name: 'AirPods Pro' }
-    ]
+      { id: 'aaa123482', name: 'AirPods Pro' },
+    ],
   },
   {
     id: 'vvv1341',
@@ -196,9 +178,7 @@ export const mockUsers: UserDto[] = [
     department: 'Marketing',
     status: 'ACTIVE',
     email: 'user19@example.com',
-    equipments: [
-      { id: 'aaa123483', name: 'Macbook Air' }
-    ]
+    equipments: [{ id: 'aaa123483', name: 'Macbook Air' }],
   },
   {
     id: 'vvv1342',
@@ -206,9 +186,7 @@ export const mockUsers: UserDto[] = [
     department: 'Sales',
     status: 'OFFBOARDED',
     email: 'user20@example.com',
-    equipments: [
-      { id: 'aaa123484', name: 'iPhone 13' }
-    ]
+    equipments: [{ id: 'aaa123484', name: 'iPhone 13' }],
   },
   {
     id: 'vvv1343',
@@ -218,8 +196,8 @@ export const mockUsers: UserDto[] = [
     email: 'user21@example.com',
     equipments: [
       { id: 'aaa123485', name: 'Macbook Pro' },
-      { id: 'aaa123486', name: 'Magic Mouse' }
-    ]
+      { id: 'aaa123486', name: 'Magic Mouse' },
+    ],
   },
   {
     id: 'vvv1344',
@@ -229,8 +207,8 @@ export const mockUsers: UserDto[] = [
     email: 'user22@example.com',
     equipments: [
       { id: 'aaa123487', name: 'Macbook Air' },
-      { id: 'aaa123488', name: 'iPad Pro' }
-    ]
+      { id: 'aaa123488', name: 'iPad Pro' },
+    ],
   },
   {
     id: 'vvv1345',
@@ -238,9 +216,7 @@ export const mockUsers: UserDto[] = [
     department: 'Engineering',
     status: 'OFFBOARDED',
     email: 'user23@example.com',
-    equipments: [
-      { id: 'aaa123489', name: 'Macbook Air' }
-    ]
+    equipments: [{ id: 'aaa123489', name: 'Macbook Air' }],
   },
   {
     id: 'vvv1346',
@@ -248,9 +224,7 @@ export const mockUsers: UserDto[] = [
     department: 'Sales',
     status: 'ACTIVE',
     email: 'user24@example.com',
-    equipments: [
-      { id: 'aaa123490', name: 'iPhone 12' }
-    ]
+    equipments: [{ id: 'aaa123490', name: 'iPhone 12' }],
   },
   {
     id: 'vvv1347',
@@ -258,9 +232,7 @@ export const mockUsers: UserDto[] = [
     department: 'Engineering',
     status: 'OFFBOARDED',
     email: 'user25@example.com',
-    equipments: [
-      { id: 'aaa123491', name: 'Macbook Pro' }
-    ]
+    equipments: [{ id: 'aaa123491', name: 'Macbook Pro' }],
   },
   {
     id: 'vvv1348',
@@ -270,8 +242,8 @@ export const mockUsers: UserDto[] = [
     email: 'user26@example.com',
     equipments: [
       { id: 'aaa123492', name: 'Macbook Air' },
-      { id: 'aaa123493', name: 'AirPods Pro' }
-    ]
+      { id: 'aaa123493', name: 'AirPods Pro' },
+    ],
   },
   {
     id: 'vvv1349',
@@ -279,9 +251,7 @@ export const mockUsers: UserDto[] = [
     department: 'Sales',
     status: 'ACTIVE',
     email: 'user27@example.com',
-    equipments: [
-      { id: 'aaa123494', name: 'Macbook Pro' }
-    ]
+    equipments: [{ id: 'aaa123494', name: 'Macbook Pro' }],
   },
   {
     id: 'vvv1350',
@@ -289,9 +259,7 @@ export const mockUsers: UserDto[] = [
     department: 'Engineering',
     status: 'OFFBOARDED',
     email: 'user28@example.com',
-    equipments: [
-      { id: 'aaa123495', name: 'iPad Air' }
-    ]
+    equipments: [{ id: 'aaa123495', name: 'iPad Air' }],
   },
   {
     id: 'vvv1351',
@@ -299,9 +267,7 @@ export const mockUsers: UserDto[] = [
     department: 'Sales',
     status: 'ACTIVE',
     email: 'user29@example.com',
-    equipments: [
-      { id: 'aaa123496', name: 'iPhone 11' }
-    ]
+    equipments: [{ id: 'aaa123496', name: 'iPhone 11' }],
   },
   {
     id: 'vvv1352',
@@ -309,9 +275,7 @@ export const mockUsers: UserDto[] = [
     department: 'Marketing',
     status: 'OFFBOARDED',
     email: 'user30@example.com',
-    equipments: [
-      { id: 'aaa123497', name: 'Macbook Air' }
-    ]
+    equipments: [{ id: 'aaa123497', name: 'Macbook Air' }],
   },
   {
     id: 'vvv1353',
@@ -321,8 +285,8 @@ export const mockUsers: UserDto[] = [
     email: 'user31@example.com',
     equipments: [
       { id: 'aaa123498', name: 'Macbook Pro' },
-      { id: 'aaa123499', name: 'Magic Mouse' }
-    ]
+      { id: 'aaa123499', name: 'Magic Mouse' },
+    ],
   },
   {
     id: 'vvv1354',
@@ -330,9 +294,7 @@ export const mockUsers: UserDto[] = [
     department: 'Sales',
     status: 'OFFBOARDED',
     email: 'user32@example.com',
-    equipments: [
-      { id: 'aaa123500', name: 'iPhone 13' }
-    ]
+    equipments: [{ id: 'aaa123500', name: 'iPhone 13' }],
   },
   {
     id: 'vvv1355',
@@ -340,9 +302,7 @@ export const mockUsers: UserDto[] = [
     department: 'Engineering',
     status: 'ACTIVE',
     email: 'user33@example.com',
-    equipments: [
-      { id: 'aaa123501', name: 'Macbook Air' }
-    ]
+    equipments: [{ id: 'aaa123501', name: 'Macbook Air' }],
   },
   {
     id: 'vvv1356',
@@ -352,8 +312,8 @@ export const mockUsers: UserDto[] = [
     email: 'user34@example.com',
     equipments: [
       { id: 'aaa123502', name: 'Macbook Pro' },
-      { id: 'aaa123503', name: 'Magic Mouse' }
-    ]
+      { id: 'aaa123503', name: 'Magic Mouse' },
+    ],
   },
   {
     id: 'vvv1357',
@@ -361,9 +321,7 @@ export const mockUsers: UserDto[] = [
     department: 'Sales',
     status: 'OFFBOARDED',
     email: 'user35@example.com',
-    equipments: [
-      { id: 'aaa123504', name: 'iPad Mini' }
-    ]
+    equipments: [{ id: 'aaa123504', name: 'iPad Mini' }],
   },
   {
     id: 'vvv1358',
@@ -371,9 +329,6 @@ export const mockUsers: UserDto[] = [
     department: 'Engineering',
     status: 'ACTIVE',
     email: 'user36@example.com',
-    equipments: [
-      { id: 'aaa123505', name: 'Macbook Air' }
-    ]
-  }
+    equipments: [{ id: 'aaa123505', name: 'Macbook Air' }],
+  },
 ];
-
