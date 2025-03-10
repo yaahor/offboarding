@@ -12,7 +12,7 @@ const PORT = mockServerPort;
 app.use(cors());
 app.use(bodyParser.json());
 
-let users = mockUsers;
+const users = mockUsers;
 
 // Get all employees
 app.get('/employees', (_, res) => {
