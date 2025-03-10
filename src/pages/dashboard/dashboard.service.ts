@@ -22,10 +22,10 @@ export class DashboardService {
           }
 
           const users = userListState.items.filter(user => {
-            const lowerSearch = state.search.toLocaleLowerCase();
+            const lowerSearch = state.search.toLowerCase();
 
-            return user.name.toLocaleLowerCase().includes(lowerSearch) ||
-              user.department.toLocaleLowerCase().includes(lowerSearch);
+            return user.name.toLowerCase().includes(lowerSearch) ||
+              user.department.toLowerCase().includes(lowerSearch);
           });
 
           return { userList: { status: Status.SUCCESS, items: users } };
