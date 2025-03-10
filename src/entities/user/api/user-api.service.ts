@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { mockServerPort } from '../../../shared/config/mock-server-port';
 import { OnboardingDto } from './onboarding.dto';
 import { UserDto } from './user.dto';
@@ -29,6 +29,7 @@ export class UserApiService {
   }
 
   conductOffboarding(userId: string, dto: OnboardingDto): Observable<void> {
-    return this.httpClient.post<void>(`${apiUrl}/users/${userId}/offboard`, dto);
+    return this.httpClient.post<void>(`${apiUrl}/users/${userId}/offboard`, dto)
+      .pipe(map(() => void 0));
   }
 }
