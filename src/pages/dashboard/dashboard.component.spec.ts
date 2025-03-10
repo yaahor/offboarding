@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DashboardComponent } from './dashboard.component';
+import { DashboardService } from './dashboard.service';
+import createSpyObj = jasmine.createSpyObj;
 
 describe(DashboardComponent.name, () => {
   let component: DashboardComponent;
@@ -8,7 +9,8 @@ describe(DashboardComponent.name, () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardComponent]
+      imports: [DashboardComponent],
+      providers: [{ provide: DashboardService, useValue: createSpyObj(DashboardService.name, ['getVo']) }],
     })
     .compileComponents();
 
