@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of, throwError } from 'rxjs';
 import { UserStatus } from '../model/user-status';
-import { mockUsers } from './mock-users';
+import { mockUsers } from '../../../mock/mock-users';
 import { OnboardingDto } from './onboarding.dto';
 import { UserDto } from './user.dto';
 

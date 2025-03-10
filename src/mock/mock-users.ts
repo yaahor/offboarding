@@ -1,4 +1,4 @@
-import { UserDto } from './user.dto';
+import { UserDto } from '../entities/user/api/user.dto';
 
 export const mockUsers: UserDto[] = [
   {
